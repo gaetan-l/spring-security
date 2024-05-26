@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tutorial</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Content</th>
+                <th>Creation</th>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tutorial: ${tutorials}">
+                <td th:text="${tutorial.title}"></td>
+                <td th:text="${tutorial.description}"></td>
+                <td th:text="${tutorial.content}"></td>
+                <td th:text="${tutorial.createAt}"></td>
+                <td th:text="${tutorial.category}"></td>
+                <td th:if="${#lists.size(tutorials) > 1}"><form th:action="'/tutorial/'+${tutorial.id}">
+                    <button type="submit">Details</button>
+                </form></td>
+                <td th:unless="${#lists.size(tutorials) > 1}"><form action="/tutorial">
+                    <button type="submit">Back</button>
+                </form></td>
+                <td><form method="GET" th:action="'/tutorial/'+${tutorial.id}+'/edit'">
+                    <button type="submit">Edit</button>
+                </form></td>
+                <td><form method="POST" th:action="'/tutorial/'+${tutorial.id}+'/delete'">
+                    <button type="submit">Delete</button>
+                </form></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

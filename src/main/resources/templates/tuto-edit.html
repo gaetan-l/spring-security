@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="POST" th:action="${action}" th:object="${tutorial}">
+        <label for="title">Title :</label><br>
+        <input type="text" id="title" th:field="*{title}"><br>
+        <label for="description">Description :</label><br>
+        <input type="text" id="description" th:field="*{description}"><br>
+        <label for="content">Content :</label><br>
+        <input type="text" id="content" th:field="*{content}"><br>
+        <label for="createAt">Start :</label><br>
+        <input type="text" id="createAt" th:field="*{createAt}"><br>
+        <label for="category">Content :</label><br>
+        <input type="text" id="category" th:field="*{category}"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
